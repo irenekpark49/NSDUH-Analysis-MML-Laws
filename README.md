@@ -9,4 +9,4 @@ https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-202
 I combined the 2018 and 2019 waves into one dataset and analyzed the 2020 wave separately because of different data collection procedures in 2020 due to the COVID-19 pandemic. First, I ran three adjusted multivariable logistic regressions, all of which showed significant association between MML and those who answered "strongly disagree" or "disagree" to the 3 main predictors (p-values < 0.001). Then, I looked for any interaction between the 3 predictor variables and covariates. Only interaction with race warranted stratification. 
 
 I'd like to thank my advisors, Professor Ching-Ti Liu and Professor Yen-Han Lee. 
-Feel free to contact me with any questions about my code! irenehsueh49@gmail.com
+Feel free to contact me at irenehsueh49@gmail.com with any questions about my code! 
