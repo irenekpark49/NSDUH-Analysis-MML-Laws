@@ -1,7 +1,5 @@
 # NSDUH-Analysis-MML-Laws
-For the research rotation project requirement for my MS in Applied Biostats at Boston University, I used the NSDUH datasets to analyze the association between the importance of someone's religious beliefs and whether their state of residence had medical marijuana laws (MML). 
-
-Datasets can be downloaded here: 
+For the research rotation project requirement for my MS in Applied Biostats at Boston University, I used the NSDUH datasets to analyze the association between the importance of someone's religious beliefs and whether their state of residence had medical marijuana laws (MML). Datasets can be found at 
 [2018 Dataset](https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2018-nsduh-2018-ds0001), 
 [2019 Dataset](https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2019-nsduh-2019-ds0001),
 [2020 Dataset](https://www.datafiles.samhsa.gov/dataset/national-survey-drug-use-and-health-2020-nsduh-2020-ds0001)
