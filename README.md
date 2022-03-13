@@ -10,3 +10,5 @@ First, I ran three weighted adjusted multivariable logistic regressions, all of 
 
 I'd like to thank my advisors, Professor Ching-Ti Liu and Professor Yen-Han Lee. 
 Feel free to contact me at irenehsueh49@gmail.com with any questions about my code!
+
+You can look at my code [here](https://github.com/irenehsueh49/NSDUH-Analysis-MML-Laws/blob/main/R%20Code.Rmd)
