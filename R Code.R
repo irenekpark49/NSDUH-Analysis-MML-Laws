@@ -117,6 +117,8 @@ drugs2018 <- PUF2018_100819 %>%
                cluster = "Primary Sampling Unit", 
                strata = "Strata", 
                weights = "Person-Level Weights")
+
+sum(drugs2018$weights)
 ```
 
 
