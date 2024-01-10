@@ -1,6 +1,6 @@
 ---
-title: "Irene Hsueh's Research Rotation Code"
-author: "Irene Hsueh"
+title: "Irene's Research Rotation Code"
+author: "Irene Kimura Park"
 date: ''
 output:
   pdf_document: default
@@ -20,7 +20,7 @@ library(survey)
 
 # 2018 Dataset
 ```{r}
-load("C:/Irene Hsueh's Documents/MS Applied Biostatistics/Research Rotation/2018 NSDUH Release/NSDUH_2018.RData")
+load("C:/Irene Park's Documents/Academics/MS Applied Biostatistics/Research Rotation/2018 NSDUH Release/NSDUH_2018.RData")
 
 drugs2018 <- PUF2018_100819 %>% 
 #Selecting Variables for Analysis
@@ -118,6 +118,7 @@ drugs2018 <- PUF2018_100819 %>%
                strata = "Strata", 
                weights = "Person-Level Weights")
 
+#Checking Sum of Weights Against Target Population
 sum(drugs2018$weights)
 ```
 
@@ -125,7 +126,7 @@ sum(drugs2018$weights)
 
 # 2019 Dataset
 ```{r}
-load("C:/Irene Hsueh's Documents/MS Applied Biostatistics/Research Rotation/2019 NSDUH Release/NSDUH_2019.RData")
+load("C:/Irene Park's Documents/Academics/MS Applied Biostatistics/Research Rotation/2019 NSDUH Release/NSDUH_2019.RData")
 
 drugs2019 <- PUF2019_100920 %>% 
 #Selecting Variables for Analysis
@@ -222,6 +223,9 @@ drugs2019 <- PUF2019_100920 %>%
                cluster = "Primary Sampling Unit", 
                strata = "Strata", 
                weights = "Person-Level Weights")
+
+#Checking Sum of Weights Against Target Population
+sum(drugs2019$weights)
 ```
 
 
@@ -252,8 +256,7 @@ drugs <- rbind(drugs2018, drugs2019) %>%
 
 
 #Descriptive Statistics
-table_html <- table1(~religion_importance + religious_decisions + religious_friends + age + sex + race +  marital_status + education + cigarettes + alcohol + mj_use + year | 
-                       medmj_law, data=drugs, overall="Total", rowlabelhead="State Medical MJ Law Passed", caption="Merged 2018 & 2019 Dataset")
+table_html <- table1(~religion_importance + religious_decisions + religious_friends + age + sex + race +  marital_status + education + cigarettes + alcohol + mj_use + year | medmj_law, data=drugs, overall="Total", rowlabelhead="State Medical MJ Law Passed", caption="Merged 2018 & 2019 Dataset")
 ```
 
 
