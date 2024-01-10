@@ -1,6 +1,6 @@
 ---
 title: "Appendix"
-author: "Irene Hsueh"
+author: "Irene Kimura Park"
 date: ""
 output:
   pdf_document: default
