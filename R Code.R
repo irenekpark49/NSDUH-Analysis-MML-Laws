@@ -160,20 +160,18 @@ table1 <- drugs_weighted %>%
     percent = "column", 
     statistic = gtsummary::all_categorical() ~ "{n_unweighted} ({p}%)", 
     digits = gtsummary::all_categorical() ~ c(0, 2),
-    label = list(
-      religion_importance = "My Religious Beliefs are Very Important", 
-      religious_decisions = "My Religion Influence My Decisions", 
-      religious_friends = "Important That Friends Share Religious Beliefs",
-      age = "Age Group", 
-      sex = "Sex", 
-      race = "Race", 
-      marital_status = "Marital Status", 
-      education = "Education", 
-      cigarettes = "Ever Smoked a Cigarette", 
-      alcohol = "Ever Had a Drink of Alcohol",
-      mj_use = "Ever Used Marijuana",
-      year = "Year of Interview"
-      )
+    label = list(religion_importance = "My Religious Beliefs are Very Important", 
+                 religious_decisions = "My Religion Influence My Decisions", 
+                 religious_friends = "Important That Friends Share Religious Beliefs",
+                 age = "Age Group", 
+                 sex = "Sex", 
+                 race = "Race", 
+                 marital_status = "Marital Status", 
+                 education = "Education", 
+                 cigarettes = "Ever Smoked a Cigarette", 
+                 alcohol = "Ever Had a Drink of Alcohol",
+                 mj_use = "Ever Used Marijuana",
+                 year = "Year of Interview")
     ) %>%
   # Add Overall Column
   gtsummary::add_overall(last = TRUE) %>%
@@ -414,7 +412,3 @@ reldecision_other <- stratified_logistic_regression(stratified_dataset = drugs_o
 relfriend_other <- stratified_logistic_regression(stratified_dataset = drugs_other_weighted, 
                                                   predictor = "religious_friends")
 ```
-
-
-
-
