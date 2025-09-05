@@ -48,7 +48,7 @@ process_data <- function(raw, year) {
     # Convert Missing Data to NA
     naniar::replace_with_na_all(condition = ~.x %in% c(85, 94, 97, 98, 99)) %>% 
     # Exclude Observations with NA
-    tidyr::drop_na() %>%
+    stats::na.omit() %>% 
     # Add Year Variable, Recode and Factor Variables  
     dplyr::mutate(year = as.factor({{year}}), 
                   religion_importance = dplyr::recode_factor(religion_importance, 
@@ -88,18 +88,18 @@ process_data <- function(raw, year) {
                                                         "2" = "Widowed", 
                                                         "3" = "Divorced/Separated", 
                                                         "4" = "Never Married"), 
-                   education = dplyr::recode_factor(education, 
-                                                    "1" = "High School Not Completed", 
-                                                    "2" = "High School Not Completed", 
-                                                    "3" = "High School Not Completed", 
-                                                    "4" = "High School Not Completed", 
-                                                    "5" = "High School Not Completed", 
-                                                    "6" = "High School Not Completed", 
-                                                    "7" = "High School Not Completed", 
-                                                    "8" = "High School Diploma", 
-                                                    "9" = "Some College", 
-                                                    "10" = "Associate Degree", 
-                                                    "11" = "College Graduate")) %>%
+                  education = dplyr::recode_factor(education, 
+                                                   "1" = "High School Not Completed", 
+                                                   "2" = "High School Not Completed", 
+                                                   "3" = "High School Not Completed", 
+                                                   "4" = "High School Not Completed", 
+                                                   "5" = "High School Not Completed", 
+                                                   "6" = "High School Not Completed", 
+                                                   "7" = "High School Not Completed", 
+                                                   "8" = "High School Diploma", 
+                                                   "9" = "Some College", 
+                                                   "10" = "Associate Degree", 
+                                                   "11" = "College Graduate")) %>%
     # Convert to Binary Yes/No Variables
     dplyr::mutate_at(.vars = c("medmj_law", "cigarettes", "alcohol", "mj_use"), 
                      .funs = ~dplyr::recode_factor(., "2" = "No", "1" = "Yes")) %>%
@@ -137,7 +137,7 @@ drugs <- rbind(drugs2018, drugs2019)
 
 
 ```{r Final Weighted Dataset}
-# Create Weighted Survey Data
+# Create Weighted Survey Dataset
 drugs_weighted <- survey::svydesign(id = ~cluster, 
                                     strata = ~strata, 
                                     weights = ~weights,
@@ -150,9 +150,7 @@ drugs_weighted <- survey::svydesign(id = ~cluster,
 table1 <- drugs_weighted %>%
   gtsummary::tbl_svysummary(
     by = medmj_law, 
-    include = c(religion_importance, 
-                religious_decisions, 
-                religious_friends, 
+    include = c(religion_importance, religious_decisions, religious_friends, 
                 age, sex, race, marital_status, education,
                 cigarettes, alcohol, mj_use, year), 
     type = gtsummary::all_dichotomous() ~ "categorical",
@@ -188,11 +186,8 @@ table1 <- drugs_weighted %>%
       ({round(p*100, 2)}%)", 
       stat_0 = "**Overall** \n 
       N = {prettyNum(n_unweighted, big.mark = ',')}")) %>%
-  # Add Footnote
-  gtsummary::remove_footnote_header(columns = gtsummary::everything()) %>%
-  gtsummary::modify_footnote_header(footnote = "Percentages and p-values from weighted dataset.",
-                                    columns = c(gtsummary::all_stat_cols(), p.value),
-                                    replace = FALSE)
+  # Remove Footnote
+  gtsummary::remove_footnote_header(columns = gtsummary::everything()) 
 ```  
   
 
