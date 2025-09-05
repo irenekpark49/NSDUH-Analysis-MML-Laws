@@ -136,7 +136,6 @@ drugs <- rbind(drugs2018, drugs2019)
 
 
 
-
 ```{r Final Weighted Dataset}
 # Create Weighted Survey Data
 drugs_weighted <- survey::svydesign(id = ~cluster, 
